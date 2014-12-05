@@ -1,32 +1,32 @@
 
 /**
-* Expose `cssPath`.
-*/
+ * Expose `cssPath`.
+ */
 
 module.exports = cssPath;
 
 /**
-* Get full CSS path of any element.
-*
-* @param {Node} el
-* @return {String}
-*/
+ * Get full CSS path of any element.
+ *
+ * @param {Node} el
+ * @return {String}
+ */
 
-function cssPath (el) {
+function cssPath(el) {
   var fullPath = 0, // Set to 1 to build ultra-specific full CSS-path, or 0 for optimised selector
-  useNthChild = 0, // Set to 1 to use ":nth-child()" pseudo-selectors to match the given element
-  cssPathStr = '',
-  testPath = '',
-  parents = [],
-  parentSelectors = [],
-  tagName,
-  cssId,
-  cssClass,
-  tagSelector,
-  vagueMatch,
-  nth,
-  i,
-  c;
+    useNthChild = 0, // Set to 1 to use ":nth-child()" pseudo-selectors to match the given element
+    cssPathStr = '',
+    testPath = '',
+    parents = [],
+    parentSelectors = [],
+    tagName,
+    cssId,
+    cssClass,
+    tagSelector,
+    vagueMatch,
+    nth,
+    i,
+    c;
 
   // Go up the list of parent nodes and build unique identifier for each:
   while (el) {
@@ -61,31 +61,31 @@ function cssPath (el) {
     if (cssId && !fullPath)
       break;
 
-      // Go up to the next parent node:
-      el = el.parentNode !== document ? el.parentNode : false;
+    // Go up to the next parent node:
+    el = el.parentNode !== document ? el.parentNode : false;
 
-    } // endwhile
+  } // endwhile
 
-    // Build the CSS path string from the parent tag selectors:
-    for (i = 0; i < parentSelectors.length; i++) {
-      cssPathStr += ' ' + parentSelectors[i]; // + ' ' + cssPathStr;
+  // Build the CSS path string from the parent tag selectors:
+  for (i = 0; i < parentSelectors.length; i++) {
+    cssPathStr += ' ' + parentSelectors[i]; // + ' ' + cssPathStr;
 
-      // If using ":nth-child()" selectors and this selector has no ID / isn't the html or body tag:
-      if (useNthChild && !parentSelectors[i].match(/#/) && !parentSelectors[i].match(/^(html|body)$/)) {
+    // If using ":nth-child()" selectors and this selector has no ID / isn't the html or body tag:
+    if (useNthChild && !parentSelectors[i].match(/#/) && !parentSelectors[i].match(/^(html|body)$/)) {
 
-        // If there's no CSS class, or if the semi-complete CSS selector path matches multiple elements:
-        if (!parentSelectors[i].match(/\./) || $(cssPathStr).length > 1) {
+      // If there's no CSS class, or if the semi-complete CSS selector path matches multiple elements:
+      if (!parentSelectors[i].match(/\./) || $(cssPathStr).length > 1) {
 
-          // Count element's previous siblings for ":nth-child" pseudo-selector:
-          for (nth = 1, c = el; c.previousElementSibling; c = c.previousElementSibling, nth++);
+        // Count element's previous siblings for ":nth-child" pseudo-selector:
+        for (nth = 1, c = el; c.previousElementSibling; c = c.previousElementSibling, nth++);
 
-          // Append ":nth-child()" to CSS path:
-          cssPathStr += ":nth-child(" + nth + ")";
-        }
+        // Append ":nth-child()" to CSS path:
+        cssPathStr += ":nth-child(" + nth + ")";
       }
-
     }
 
-    // Return trimmed full CSS path:
-    return cssPathStr.replace(/^[ \t]+|[ \t]+$/, '');
   }
+
+  // Return trimmed full CSS path:
+  return cssPathStr.replace(/^[ \t]+|[ \t]+$/, '');
+}
