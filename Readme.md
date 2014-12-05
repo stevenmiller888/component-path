@@ -3,7 +3,15 @@
 
 Get full CSS path of any element.
 
-# MIT
+## Example
+
+```js
+var cssPath = require('stevenmiller888/css-path');
+var node = document.querySelector('div');
+var path = cssPath(node);
+```
+
+## MIT
 
 The MIT License (MIT)
 
