@@ -1,5 +1,5 @@
 
-# cssPath
+# css-path
 
 Get full CSS path of any element.
 
