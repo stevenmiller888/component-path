@@ -1,0 +1,6 @@
+{
+  "name": "css-path",
+  "repository": "git://github.com/stevenmiller888/css-path",
+  "version": "0.0.1",
+  "description": "Get the css path to any element"
+}
