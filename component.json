@@ -1,0 +1,9 @@
+{
+  "name": "component-path",
+  "description": "Get the full css path of any element",
+  "author": "Steven Miller",
+  "version": "0.0.1",
+  "repository": "https://github.com/stevenmiller888/css-path",
+  "main": "lib/index.js",
+  "license": "MIT"
+}
