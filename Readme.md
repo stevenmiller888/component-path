@@ -1,5 +1,5 @@
 
-# css-path
+# component-path
 
 > Get the full css path of any element
 
