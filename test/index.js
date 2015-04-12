@@ -16,6 +16,6 @@ describe('cssPath()', function(){
   });
   
   it('should give the path to an element', function(){
-    // TODO
+    // ...
   });
 });
